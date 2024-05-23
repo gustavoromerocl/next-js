@@ -1,11 +1,22 @@
+import { Pokemon } from "@/pokemons";
+
 interface Props {
   params: { id: string };
 }
 
-export default function pokemonPage({ params }: Props) {
+const getPokemon = async (id: string): Promise<any> => {
+  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    cache: 'force-cache' //TODO: cambiar esto posteriormente
+  }).then(resp => resp.json())
+  console.log("POKEMON LOG", pokemon);
+  return pokemon;
+}
+
+export default async function pokemonPage({ params }: Props) {
+  const pokemon = await getPokemon(params.id)
   return (
     <div>
-      <h1>Pokemon {params.id}</h1>
+      {JSON.stringify(pokemon)}
     </div>
   );
 }
