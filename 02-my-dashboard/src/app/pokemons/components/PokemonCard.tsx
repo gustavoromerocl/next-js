@@ -19,6 +19,8 @@ export const PokemonCard = ({ pokemon }: Props) => {
             width={100}
             height={100}
             alt={name}
+            //Carga las imagenes bajo demanda
+            priority={false}
           />
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">{name}</p>
           <p className="text-sm text-gray-100">John@Doe.com</p>
